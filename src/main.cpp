@@ -24,9 +24,18 @@
 #include <raylib.h>
 #include <iostream>
 
-//------------------------------------------------------------------------------------
-// Program main entry point
-//------------------------------------------------------------------------------------
+
+//Chess piece class
+class chess_Piece
+{
+    public:
+        Texture2D texture_name;
+        float Xpos = 0, Ypos = 0;
+        Color color_name;
+
+};
+
+
 int main(void)
 {
     // Initialization
@@ -51,6 +60,7 @@ int main(void)
     Texture2D w_queen = LoadTexture("C:/Users/HP/Desktop/c++ projects/GMTK Game Jam 2023/src/Chess_images/game_images/w_queen.png");
     Texture2D b_king = LoadTexture("C:/Users/HP/Desktop/c++ projects/GMTK Game Jam 2023/src/Chess_images/game_images/b_king.png");
     Texture2D w_king = LoadTexture("C:/Users/HP/Desktop/c++ projects/GMTK Game Jam 2023/src/Chess_images/game_images/w_king.png");
+
     // Sets our game to run at 60 frames-per-second
     SetTargetFPS(60);
 
@@ -69,8 +79,8 @@ int main(void)
         DrawTexture(bg_image, 0, 0, WHITE);
         for (int i = 0; i <= 7; i++)
         {
-            DrawTextureEx(b_pawn, (Vector2){float(7 + 80 * i), 80}, 0.0f, 1.0f, WHITE);
-            DrawTextureEx(w_pawn, (Vector2){float(7 + 80 * i), 480}, 0.0f, 1.0f, WHITE);
+            DrawTexture(b_pawn, float(7 + 80 * i), 80, WHITE);
+            DrawTexture(w_pawn, float(7 + 80 * i), 480, WHITE);
         }
         for (int i = 0; i < 2; i++)
         {

@@ -38,13 +38,14 @@ class chess_Piece
         int Xpos = 0, Ypos = 0;
         Color color_name;
         bool isBlack;
-        
+        Rectangle recbox = {};
 
 };
 
 class Pawn : public chess_Piece {
 
     public:
+
         Pawn(bool x, const char* y, int z, int a, Color b){
             isBlack = x;
             texture = LoadTexture(y);
@@ -89,6 +90,7 @@ class Bishop : public chess_Piece {
             Xpos = z;
             Ypos = a;
             color_name = b;
+            //recbox = 
         }
 
 };
@@ -177,8 +179,43 @@ int main(void)
     King b_king1(true, "C:/Users/HP/Desktop/c++ projects/GMTK Game Jam 2023/src/Chess_images/game_images/b_king.png", 322, 2, WHITE);
     King w_king1(false, "C:/Users/HP/Desktop/c++ projects/GMTK Game Jam 2023/src/Chess_images/game_images/w_king.png", 323, 563, WHITE);
     
-    Rectangle b_pawn1_rec = {b_pawn1.Xpos, b_pawn1.Ypos, b_pawn1.texture.width, b_pawn1.texture.height};
-    
+
+    //Creates the recboxes
+
+    Rectangle recarr[32] = {};
+    recarr[0] = {float(b_pawn1.Xpos), float(b_pawn1.Ypos), float(b_pawn1.texture.width), float(b_pawn1.texture.height)};
+    recarr[1] = {float(b_pawn2.Xpos), float(b_pawn2.Ypos), float(b_pawn2.texture.width), float(b_pawn2.texture.height)};
+    recarr[2] = {float(b_pawn3.Xpos), float(b_pawn3.Ypos), float(b_pawn3.texture.width), float(b_pawn3.texture.height)};
+    recarr[3] = {float(b_pawn4.Xpos), float(b_pawn4.Ypos), float(b_pawn4.texture.width), float(b_pawn4.texture.height)};
+    recarr[4] = {float(b_pawn5.Xpos), float(b_pawn5.Ypos), float(b_pawn5.texture.width), float(b_pawn5.texture.height)};
+    recarr[5] = {float(b_pawn6.Xpos), float(b_pawn6.Ypos), float(b_pawn6.texture.width), float(b_pawn6.texture.height)};
+    recarr[6] = {float(b_pawn7.Xpos), float(b_pawn7.Ypos), float(b_pawn7.texture.width), float(b_pawn7.texture.height)};
+    recarr[7] = {float(b_pawn8.Xpos), float(b_pawn8.Ypos), float(b_pawn8.texture.width), float(b_pawn8.texture.height)};
+    recarr[8] = {float(w_pawn1.Xpos), float(w_pawn1.Ypos), float(w_pawn1.texture.width), float(w_pawn1.texture.height)};
+    recarr[9] = {float(w_pawn2.Xpos), float(w_pawn2.Ypos), float(w_pawn2.texture.width), float(w_pawn2.texture.height)};
+    recarr[10] = {float(w_pawn3.Xpos), float(w_pawn3.Ypos), float(w_pawn3.texture.width), float(w_pawn3.texture.height)};
+    recarr[11] = {float(w_pawn4.Xpos), float(w_pawn4.Ypos), float(w_pawn4.texture.width), float(w_pawn4.texture.height)};
+    recarr[12] = {float(w_pawn5.Xpos), float(w_pawn5.Ypos), float(w_pawn5.texture.width), float(b_pawn5.texture.height)};
+    recarr[13] = {float(w_pawn6.Xpos), float(w_pawn6.Ypos), float(w_pawn6.texture.width), float(w_pawn6.texture.height)};
+    recarr[14] = {float(w_pawn7.Xpos), float(w_pawn7.Ypos), float(w_pawn7.texture.width), float(w_pawn7.texture.height)};
+    recarr[15] = {float(w_pawn8.Xpos), float(w_pawn8.Ypos), float(w_pawn8.texture.width), float(w_pawn8.texture.height)};
+    recarr[16] = {float(b_rook1.Xpos), float(b_rook1.Ypos), float(b_rook1.texture.width), float(b_rook1.texture.height)};
+    recarr[17] = {float(b_rook2.Xpos), float(b_rook2.Ypos), float(b_rook2.texture.width), float(b_rook2.texture.height)};
+    recarr[18] = {float(w_rook1.Xpos), float(w_rook1.Ypos), float(w_rook1.texture.width), float(w_rook1.texture.height)};
+    recarr[19] = {float(w_rook2.Xpos), float(w_rook2.Ypos), float(w_rook2.texture.width), float(w_rook2.texture.height)};
+    recarr[20] = {float(b_knight1.Xpos), float(b_knight1.Ypos), float(b_knight1.texture.width), float(b_knight1.texture.height)};
+    recarr[21] = {float(b_knight2.Xpos), float(b_knight2.Ypos), float(b_knight2.texture.width), float(b_knight2.texture.height)};
+    recarr[22] = {float(w_knight1.Xpos), float(w_knight1.Ypos), float(w_knight1.texture.width), float(w_knight1.texture.height)};
+    recarr[23] = {float(w_knight2.Xpos), float(w_knight2.Ypos), float(w_knight2.texture.width), float(w_knight2.texture.height)};
+    recarr[24] = {float(b_bishop1.Xpos), float(b_bishop1.Ypos), float(b_bishop1.texture.width), float(b_bishop1.texture.height)};
+    recarr[25] = {float(b_bishop2.Xpos), float(b_bishop2.Ypos), float(b_bishop2.texture.width), float(b_bishop2.texture.height)};
+    recarr[26] = {float(w_bishop1.Xpos), float(w_bishop1.Ypos), float(w_bishop1.texture.width), float(w_bishop1.texture.height)};
+    recarr[27] = {float(w_bishop2.Xpos), float(w_bishop2.Ypos), float(w_bishop2.texture.width), float(w_bishop2.texture.height)};
+    recarr[28] = {float(b_queen1.Xpos), float(b_queen1.Ypos), float(b_queen1.texture.width), float(b_queen1.texture.height)};
+    recarr[29] = {float(w_queen1.Xpos), float(w_queen1.Ypos), float(w_queen1.texture.width), float(w_queen1.texture.height)};
+    recarr[28] = {float(b_king1.Xpos), float(b_king1.Ypos), float(b_king1.texture.width), float(b_king1.texture.height)};
+    recarr[29] = {float(w_king1.Xpos), float(w_king1.Ypos), float(w_king1.texture.width), float(w_king1.texture.height)};
+
     // Sets our game to run at 60 frames-per-second
     SetTargetFPS(60);
 
@@ -191,7 +228,17 @@ int main(void)
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
+        for (int i = 0; i < 32; i++) 
+        {
+            
+            if (CheckCollisionPointRec(GetMousePosition(), recarr[i])) {
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+                    
+                }
+            }
 
+        }
+        
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
